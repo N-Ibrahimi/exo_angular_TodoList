@@ -1,1 +1,8 @@
-<p>todo works!</p>
+
+<div *ngFor="let i of list" class="shadow col-md-3 col-sm-12 m-4 border border-secondary rounded " [style.background-color]="'rgb(190, 189, 189)'">
+    <p class="font-weight-bold  my-3" >{{ i.name}} </p> 
+    <app-item [datatoChild]="i.elements" ></app-item>  
+</div>
+<div class="shadow col-md-3 col-sm-12 m-4 border border-secondary rounded bg-light d-flex justify-content-center " >
+    <i class="fas fa-plus-circle m-auto " [ngStyle]="{'font-size':'60px', 'color':'rgb(173, 223, 252)','text-shadow':'1px 1px 2px grey'}"></i>
+</div>
