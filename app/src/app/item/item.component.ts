@@ -14,8 +14,8 @@ export class Item{
                 <span class="fas fa-trash-alt text-danger my-4 m-2" (click)="delete($event)"></span>
                 <span class="fas fa-pencil-alt m-1 mr-2  my-4 p-0" (click)="modify($event)" ></span>
             </ul>
-            <div class="rounded-pill m-3 p-3 d-flex justify-content-center font-weight-bold  border border-primary" 
-            style="background-color:rgb(237, 112, 253);" (click)="add($event)">
+            <div class="rounded-pill m-3 p-3 d-flex justify-content-center font-weight-bold" 
+            style="background-color:rgb(173, 223, 252); border:1px solid rgba(110, 101, 231, 0.808)" (click)="add($event)">
               Add New Task
             </div> `,
   styleUrls: []
