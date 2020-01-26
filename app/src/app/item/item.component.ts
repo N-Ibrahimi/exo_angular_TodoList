@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../todo.service';
 
-export class Item{
-  constructor(element:String){}
+export class Item {
+  constructor(element: String) { }
 }
 
 @Component({
   selector: 'app-item',
-  template:`    <div [ngSwitch]="qltag" class="w-80 mr-auto px-0 m-1 py-2">
+  template: `    <div [ngSwitch]="qltag" class="w-80 mr-auto px-0 m-1 py-2" >
                 <li *ngSwitchCase="'view'" class=" text-wrap list-unstyled text-wrap ">
                   {{task | titlecase}}
                 </li>
@@ -20,27 +20,30 @@ export class Item{
 })
 
 export class ItemComponent implements OnInit {
-  public qltag="view";
-  constructor(private item:TodoService) { }
+  public qltag = "view";
+  constructor(private item: TodoService) { }
 
   @Input() public task;
-  @Output() public iditem:EventEmitter<any>=new EventEmitter<any>(); 
+  @Output() public iditem: EventEmitter<any> = new EventEmitter<any>();
+
   ngOnInit() {
 
   }
-  
-  delete(){
+
+  delete() {
     this.iditem.emit(this.task);
-  }  
-  modify(event){
+  }
+  modify(event) {
     console.log(event.target);
-    this.qltag="edit"; 
+    this.qltag = "edit";
   }
 
-  onEnter(event){
+  onEnter(event) {
     if (event.key === "Enter") {
-      this.task=event.target.value.trim();
-      this.qltag="view";
-    } 
+      this.task = event.target.value.trim();
+      this.qltag = "view";
+    }
   }
+
+
 }

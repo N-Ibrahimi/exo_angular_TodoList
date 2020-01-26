@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatInputModule, MatFormFieldModule, MatDatepickerModule} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from '@angular/common/http';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatDatepickerModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ import { TodoComponent } from './todo/todo.component';
 import { ItemComponent } from './item/item.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { RouteComponent } from './route/route.component';
-import {TodoService} from './todo.service';
+import { TodoService } from './todo.service';
 import { ListsComponent } from './lists/lists.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { ListsComponent } from './lists/lists.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     BrowserModule,
@@ -40,7 +40,7 @@ import { ListsComponent } from './lists/lists.component';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [TodoService ],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

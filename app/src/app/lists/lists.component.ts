@@ -1,45 +1,76 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-lists',
-  template:`<div *ngFor="let item of items; let num=index" class="bg-warning rounded mx-0 my-2 p-1 border border-secondary ">
-               <app-item class="p-0 m-0 d-flex" [task]="item" (iditem)="delete(num)"></app-item>
+  template: `<div [ngSwitch]="qltag" >
+              <p *ngSwitchCase="'view'" (click)="modify()" class="font-weight-bolder  my-3" [style.color]="'rgb(224, 66, 3)'" > {{index+1}}) {{name| titlecase}} </p> 
+              <mat-form-field *ngSwitchCase="'edit'" class="my-3 col-12" >
+              <input matInput placeholder="Enter title"  (keypress)=onEnter($event) >
+              </mat-form-field>
+            </div>
+            <div *ngFor="let item of items; let num=index" class="bg-warning rounded mx-0 my-2 p-1 border border-secondary">
+               <app-item class="p-0 m-0 d-flex" [task]="item"  (iditem)="delete(num)"></app-item>
             </div>
             <input *ngIf="addNewTask==true" (keydown)="onKeydown($event)" class="col my-1 mx-auto p-2 " />
             <button class="col my-3 mx-auto p-2 " 
-            style="background-color:rgb(173, 223, 252); border:1px solid rgba(110, 101, 231, 0.808);" (click)="add()" mat-stroked-button color="primary">
+            style="background-color:rgb(173, 223, 252); border:1px solid rgba(110, 101, 231, 0.808);" (click)="add($event)" mat-stroked-button color="primary">
               Add New Task
-            </button> `,
+            </button> 
+            
+            `,
   styleUrls: []
- 
+
 })
 export class ListsComponent implements OnInit {
-  
-  addNewTask=false;
-  items=[];
-  constructor(private item:TodoService) { }
+  public qltag = "view";
+  addNewTask = false;
+  items = [];
+  constructor(private item: TodoService) {
+  }
 
-  @Input() 
+  @Input()
   public datalist;
-  
+  @Input()
+  public index;
+  @Input()
+  public name;
+
   ngOnInit() {
-    this.items=this.datalist;
-    console.log(this.datalist);
+    this.items = this.datalist.elements;
+    //console.log(this.datalist);
   }
 
-  add(){
-    this.addNewTask=true; 
+  add(event) {
+    this.addNewTask = true;
+    console.log(event.target);
+    console.log(this.index);
   }
 
-  onKeydown(event){
+  onKeydown(event) {
     if (event.key === "Enter") {
-      this.items.push(event.target.value.trim());
-      this.addNewTask=false;
-    } 
-  } 
-
-  delete(idice){
-  this.items.splice(idice,1);
+      let data = event.target.value.trim();
+      if (data != null || data !== "") {
+        this.items.push(data);
+        this.addNewTask = false;
+      }
+    }
   }
+
+
+  delete(idice) {
+    this.items.splice(idice, 1);
+  }
+
+  modify() {
+    this.qltag = "edit";
+  }
+
+  onEnter(event) {
+    if (event.key === "Enter") {
+      this.name = event.target.value.trim();
+      this.qltag = "view";
+    }
+  }
+
 }

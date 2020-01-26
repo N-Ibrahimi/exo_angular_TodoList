@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {Data} from './Data.module';
-import { findNode } from '@angular/compiler';
 
 
 
