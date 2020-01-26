@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import { TodoService } from '../todo.service';
 
 @Component({
@@ -22,11 +22,6 @@ export class ListsComponent implements OnInit {
 
   @Input() 
   public datalist;
-  @Input()
-  public indexOFlist;
-
-  @Output()
-  public select=new EventEmitter<any>();
   
   ngOnInit() {
     this.items=this.datalist;
