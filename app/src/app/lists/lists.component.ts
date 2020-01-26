@@ -4,7 +4,7 @@ import { TodoService } from '../todo.service';
 @Component({
   selector: 'app-lists',
   template:`<div *ngFor="let item of items; let num=index" class="bg-warning rounded mx-0 my-2 p-1 border border-secondary ">
-               <app-item class="p-0 m-0 d-flex" [task]="item" [index]="num" ></app-item>
+               <app-item class="p-0 m-0 d-flex" [task]="item" (iditem)="delete(num)"></app-item>
             </div>
             <input *ngIf="addNewTask==true" (keydown)="onKeydown($event)" class="col my-1 mx-auto p-2 " />
             <button class="col my-3 mx-auto p-2 " 
@@ -33,7 +33,6 @@ export class ListsComponent implements OnInit {
     console.log(this.datalist);
   }
 
-
   add(){
     this.addNewTask=true; 
   }
@@ -43,11 +42,9 @@ export class ListsComponent implements OnInit {
       this.items.push(event.target.value.trim());
       this.addNewTask=false;
     } 
-   // console.log(this.items); 
   } 
 
-  delete(){
-    console.log(this.indexOFlist);
-    //this.select.emit(this.items.indexOf())
+  delete(idice){
+  this.items.splice(idice,1);
   }
 }

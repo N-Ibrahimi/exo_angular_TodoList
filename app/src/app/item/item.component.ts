@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../todo.service';
 
 export class Item{
@@ -9,7 +9,7 @@ export class Item{
   selector: 'app-item',
   template:`    <div [ngSwitch]="qltag" class="w-80 mr-auto px-0 m-1 py-2">
                 <li *ngSwitchCase="'view'" class=" text-wrap list-unstyled text-wrap ">
-                  {{task | titlecase}} {{index}}
+                  {{task | titlecase}}
                 </li>
                 <input *ngSwitchCase="'edit'" value={{task}} (keydown)="onEnter($event)" autofocus>
                 </div>
@@ -24,14 +24,13 @@ export class ItemComponent implements OnInit {
   constructor(private item:TodoService) { }
 
   @Input() public task;
-  @Input() public index;
-  
+  @Output() public iditem:EventEmitter<any>=new EventEmitter<any>(); 
   ngOnInit() {
 
   }
   
-  delete(event){
-    console.log("delete this one " +event);
+  delete(){
+    this.iditem.emit(this.task);
   }  
   modify(event){
     console.log(event.target);

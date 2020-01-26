@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatFormFieldModule, MatDatepickerModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
@@ -22,6 +22,7 @@ import { ListsComponent } from './lists/lists.component';
     ConnexionComponent,
     RouteComponent,
     ListsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,9 @@ import { ListsComponent } from './lists/lists.component';
     FormsModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [TodoService ],
   bootstrap: [AppComponent]

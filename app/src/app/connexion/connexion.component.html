@@ -10,7 +10,7 @@
             <mat-label>Enter Your Password</mat-label>
             <input matInput placeholder="Your Password" required #pass [(ngModel)]="password" name="name">
         </mat-form-field>
-        <mat-form-field appearance="outline">
+       <mat-form-field appearance="outline">
             <mat-label>Confirm Your Password</mat-label>
             <input matInput placeholder="Renter Password" required [(ngModel)]="confpassword" name="name" (keyup)="check(username,password,confpassword)" >
             <mat-hint *ngIf="disabled" class="text-danger mt-0 mb-2"> Don't match !</mat-hint>
@@ -22,16 +22,6 @@
 
 {{username}}
 <div class="col-md-4  border border-success col-sm-10 p-4 m-5">
-    <form class="d-flex flex-column col-12 " ngForm  >
-        <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Your name" required >
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Your Password" required >
-        </mat-form-field>
-        <button mat-stroked-button color="primary" >sign up</button>
-    </form>
+  
 </div>
 </div>

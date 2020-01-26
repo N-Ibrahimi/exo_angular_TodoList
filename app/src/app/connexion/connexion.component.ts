@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 
-
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -12,7 +11,6 @@ export class ConnexionComponent implements OnInit {
   username;
   password;
   confpassword;
-
 
   constructor() {}
 
@@ -31,5 +29,9 @@ export class ConnexionComponent implements OnInit {
   signup(){
     console.log("go don");
   }
+
+onSubmit(){
+
+}
 
 }
