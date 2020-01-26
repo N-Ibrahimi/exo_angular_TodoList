@@ -8,15 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+  disabled:boolean=true;
+  username;
+  password;
+  confpassword;
 
-  
 
   constructor() {}
 
   ngOnInit() {
   }
 
-  signup(user,pass){
-    console.log(user + " , " + pass);
+ 
+  check(userName,password,confpassword){
+    if(userName != null && password==confpassword){
+      this.disabled=false;
+    }else{
+      this.disabled=true;
+    };
   }
+  
+  signup(){
+    console.log("go don");
+  }
+
 }

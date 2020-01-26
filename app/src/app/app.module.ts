@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +35,7 @@ import { ListsComponent } from './lists/lists.component';
     FormsModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [TodoService ],
   bootstrap: [AppComponent]
