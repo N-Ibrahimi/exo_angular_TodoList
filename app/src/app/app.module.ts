@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,8 +26,16 @@ import { ListsComponent } from './lists/lists.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatButtonModule, 
+    MatInputModule,
+    MatFormFieldModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
-  providers: [TodoService],
+  providers: [TodoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

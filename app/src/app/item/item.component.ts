@@ -7,31 +7,25 @@ export class Item{
 
 @Component({
   selector: 'app-item',
-  template:`<ul *ngFor="let item of items" class="d-flex  bg-warning rounded mx-0 my-3 p-0 border border-secondary">
-               <li *ngIf="view" class="flex-grow-1 m-0 p-0 pl-3 my-3 d-inline-flex">
-                  {{item}}
+  template:`
+                <li class="col-auto mr-auto px-0 m-1 py-2 text-wrap list-unstyled">
+                  {{task}}
                 </li>
-                <span class="fas fa-trash-alt text-danger my-4 m-2" (click)="delete($event)"></span>
-                <span class="fas fa-pencil-alt m-1 mr-2  my-4 p-0" (click)="modify($event)" ></span>
-            </ul>
-            <div class="rounded-pill m-3 p-3 d-flex justify-content-center font-weight-bold" 
-            style="background-color:rgb(173, 223, 252); border:1px solid rgba(110, 101, 231, 0.808)" (click)="add($event)">
-              Add New Task
-            </div> `,
+                <span class="col-auto fas fa-trash-alt text-danger m-2 my-3 p-0 " (click)="delete($event)"></span>
+                <span class=" col-auto fas fa-pencil-alt p-0 my-3 m-0 mr-2" (click)="modify($event)" ></span>
+                `,
   styleUrls: []
 })
 
 export class ItemComponent implements OnInit {
-
-  public items=[];
   public view=true;
   constructor(private item:TodoService) { }
-  @Input() public datatoChild;
+  @Input() public task;
   
   ngOnInit() {
-    this.items= this.datatoChild;
-  }
 
+  }
+  
   delete(event){
     console.log(event);
   }  
