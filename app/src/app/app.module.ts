@@ -4,6 +4,7 @@ import { MatButtonModule, MatInputModule, MatFormFieldModule, MatDatepickerModul
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,8 +39,10 @@ import { ListsComponent } from './lists/lists.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatToolbarModule
   ],
+  exports:[MatToolbarModule],
   providers: [TodoService],
   bootstrap: [AppComponent]
 })

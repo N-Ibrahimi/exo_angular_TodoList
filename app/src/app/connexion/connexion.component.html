@@ -1,29 +1,31 @@
 <div class=" row d-flex justify-content-around">
     <div class="col-md-4  border border-success col-sm-10 p-5 m-5 bg-light rounded">
-        <form class="d-flex flex-column col-12 py-2 " ngForm #signup>
+        <div class="d-flex flex-column col-12 py-2 " >
             <mat-form-field appearance="outline">
                 <mat-label>Enter Your Name</mat-label>
-                <input matInput placeholder="Your name" required #user [(ngModel)]="username" name="name">
+                <input matInput placeholder="Your name" required [(ngModel)]="username" name="username">
                 <mat-hint *ngIf="username==null" class="text-danger mt-0 mb-2"> Username Required !</mat-hint>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Enter Your Password</mat-label>
-                <input matInput placeholder="Your Password" required #pass [(ngModel)]="password" name="name">
+                <input matInput placeholder="Your Password" required [(ngModel)]="password" name="name">
             </mat-form-field>
+          
+            <button mat-stroked-button color="primary" (click)="singin(username, password)" class="py-1 mt-3">signup</button>
+                
+            </div>
+    </div>
+    {{username}} {{password}}
+    <div class="col-md-4  border border-success col-sm-10 p-4 m-5">
+    
+    </div>
+</div>
+
+  <!--
             <mat-form-field appearance="outline">
                 <mat-label>Confirm Your Password</mat-label>
                 <input matInput placeholder="Renter Password" required [(ngModel)]="confpassword" name="name"
                     (keyup)="check(username,password,confpassword)">
                 <mat-hint *ngIf="disabled" class="text-danger mt-0 mb-2"> Don't match !</mat-hint>
             </mat-form-field>
-            <button [disabled]="disabled" mat-stroked-button color="primary" class="py-1 mt-3" >sign
-                up</button>
-        </form>
-    </div>
-
-
-    {{username}}
-    <div class="col-md-4  border border-success col-sm-10 p-4 m-5">
-
-    </div>
-</div>
+            -->

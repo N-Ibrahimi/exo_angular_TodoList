@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import {TodoService} from './todo.service'
+import { getMatInputUnsupportedTypeError } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public search;
+  public auth:boolean=false;
+  constructor(private listservice: TodoService){}
+
+  ngOnInit() {
+    
+  }
+
+    show(event){
+      this.auth=true;
+    }
+
+    deconnecte(){
+      this.auth=false;
+    }
 }

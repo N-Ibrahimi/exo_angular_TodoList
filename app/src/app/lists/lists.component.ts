@@ -6,7 +6,7 @@ import { TodoService } from '../todo.service';
   template: `<div [ngSwitch]="qltag" class="d-flex col-12">
               <p *ngSwitchCase="'view'" (click)="modify()" class="font-weight-bolder  my-3" [style.color]="'rgb(118, 15, 214)'" > {{index+1}}) {{name| titlecase}} </p> 
               <mat-form-field *ngSwitchCase="'edit'" class="my-3 col-12" >
-              <input matInput placeholder="Enter title"  (keypress)=onEnter($event) >
+              <input class="col my-1 mx-auto p-2 " (keypress)=onEnter($event) >
               </mat-form-field>
               
             </div>

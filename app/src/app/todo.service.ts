@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { TodoList } from './todo/todo.component';
 
-
+//http://92.222.69.104/todo/create/mnb/mnb
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +11,36 @@ import { TodoList } from './todo/todo.component';
 export class TodoService {
 
   private Url="http://92.222.69.104:80/todo/listes";
-  public finded;
+  public username: string;
+  public Password:string;
+
   constructor(private http:HttpClient) {
    }
  
   getList():Observable<Data>{
-    const Headers=new HttpHeaders().set('login','mnb').set('password','mnb').set('Content-Type','application/json');
+    const Headers=new HttpHeaders().set('login',this.username).set('password',this.Password).set('Content-Type','application/json');
     return this.http.get<Data>(this.Url, {headers:Headers});
-
-     
-    /*   
-    ,Headers{'login':'mnb','password':'mnb'}
-    return [{"name": "Devoir IPI", "elements": ["Apprendre Ajax", "Etudier Javascript"]},{
-          "name": "Perso","elements": ["Se lever", "Se doucher"]},{
-          "name": "one","elements": ["going cinma", "go sleep man ! "]},{
-          "name": "two","elements": ["aller au parc", "aller !!! "]},{
-          "name": "three","elements": ["fait du sport", "plus de code, arretez ! "]}];
-          //  when you are using the data in Ts files with the service. but if you have a BD or server, it is bettre to use observable 
-        
-      }
-*/
     }
-}
 
-interface Data{
+    sendList(data:Data):Observable<any>{
+    const Header=new HttpHeaders().set('login', this.username).set('password',this.Password).set('Content-Type','application/json');
+    return this.http.post<any>(this.Url,data, {headers:Header});
+    }
+
+    connectMe(u,p):Observable<String>{
+      this.username=u;
+      this.Password=p;
+      const hearders=new HttpHeaders().set('login',u).set('password',p).set('Content-Type','application/json');
+      return this.http.get<string>(this.Url,{headers:hearders});
+    }
+  }
+export class Data{
   utilisateur:string;
-  password:String;
+  password:string;
   todoListes:[];
+  constructor(user,pass,list) {
+    this.utilisateur=user;
+    this.todoListes=list;
+    this.password=pass;
+  }
 }
