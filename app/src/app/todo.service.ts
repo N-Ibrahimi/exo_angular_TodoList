@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
+import { TodoList } from './todo/todo.component';
 
 
 
@@ -8,12 +10,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TodoService {
 
-  private Url="/assets/db/data.json";
+  private Url="http://92.222.69.104:80/todo/listes";
   public finded;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   }
+ 
+  getList():Observable<Data>{
+    const Headers=new HttpHeaders().set('login','mnb').set('password','mnb').set('Content-Type','application/json');
+    return this.http.get<Data>(this.Url, {headers:Headers});
 
-  getList(){
-    //return //this.http.get(this.Url);
+     
+    /*   
+    ,Headers{'login':'mnb','password':'mnb'}
     return [{"name": "Devoir IPI", "elements": ["Apprendre Ajax", "Etudier Javascript"]},{
           "name": "Perso","elements": ["Se lever", "Se doucher"]},{
           "name": "one","elements": ["going cinma", "go sleep man ! "]},{
@@ -22,6 +30,12 @@ export class TodoService {
           //  when you are using the data in Ts files with the service. but if you have a BD or server, it is bettre to use observable 
         
       }
+*/
+    }
+}
 
-
+interface Data{
+  utilisateur:string;
+  password:String;
+  todoListes:[];
 }

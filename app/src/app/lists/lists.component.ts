@@ -3,11 +3,12 @@ import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-lists',
-  template: `<div [ngSwitch]="qltag" >
-              <p *ngSwitchCase="'view'" (click)="modify()" class="font-weight-bolder  my-3" [style.color]="'rgb(224, 66, 3)'" > {{index+1}}) {{name| titlecase}} </p> 
+  template: `<div [ngSwitch]="qltag" class="d-flex col-12">
+              <p *ngSwitchCase="'view'" (click)="modify()" class="font-weight-bolder  my-3" [style.color]="'rgb(118, 15, 214)'" > {{index+1}}) {{name| titlecase}} </p> 
               <mat-form-field *ngSwitchCase="'edit'" class="my-3 col-12" >
               <input matInput placeholder="Enter title"  (keypress)=onEnter($event) >
               </mat-form-field>
+              
             </div>
             <div *ngFor="let item of items; let num=index" class="bg-warning rounded mx-0 my-2 p-1 border border-secondary">
                <app-item class="p-0 m-0 d-flex" [task]="item"  (iditem)="delete(num)"></app-item>
@@ -17,7 +18,6 @@ import { TodoService } from '../todo.service';
             style="background-color:rgb(173, 223, 252); border:1px solid rgba(110, 101, 231, 0.808);" (click)="add($event)" mat-stroked-button color="primary">
               Add New Task
             </button> 
-            
             `,
   styleUrls: []
 
