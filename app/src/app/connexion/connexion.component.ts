@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {TodoService} from '../todo.service';
+import { TodoService } from '../todo.service';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -10,12 +10,12 @@ export class ConnexionComponent implements OnInit {
   username;
   password;
   confpassword;
-  public logedin:boolean=false;
+  public logedin: boolean = false;
 
   @Output()
-  public status:EventEmitter<any> = new EventEmitter<any>();
+  public status: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor( private connexionservice :TodoService) { }
+  constructor(private connexionservice: TodoService) { }
 
   ngOnInit() {
   }
@@ -29,12 +29,12 @@ export class ConnexionComponent implements OnInit {
   }
 
   public signup() {
-    console.log(this.username +" **"+this.password);
+    console.log(this.username + " **" + this.password);
   }
 
-  singin(us,ps){
-    console.log(us +" **"+ps);
-    this.connexionservice.connectMe(us,ps).subscribe(()=> {this.logedin=true}, error => console.log(error),() => console.log('Fini !'));
+  singin(us, ps) {
+    console.log(us + " **" + ps);
+    this.connexionservice.connectMe(us, ps).subscribe(() => { this.logedin = true }, error => console.log(error), () => console.log('Fini !'));
     this.status.emit(true);
   }
   onSubmit() {

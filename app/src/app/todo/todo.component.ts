@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Item } from '../item/item.component';
-import { EventEmitter } from 'protractor';
 
 export class TodoList {
   constructor(public name: string, elements: Item[]) { }
@@ -29,12 +28,12 @@ export class TodoList {
 export class TodoComponent implements OnInit {
   public qltag = "view";
   public list;
-  public num=0;
-  public data:any;
+  public num = 0;
+  public data: any;
 
   @Output()
-  public deconnexion:EventEmitter=new EventEmitter();
-  
+  public deconnexion: EventEmitter = new EventEmitter();
+
   @Input()
   public search;
   constructor(private listservice: TodoService) {
@@ -44,25 +43,25 @@ export class TodoComponent implements OnInit {
     this.list.push({ 'name': "Enter Title", "elements": [] });
   }
 
-  delete(num){
-    if(confirm("Are you sure to delete this list?")){
-    this.list.splice(num, 1);
+  delete(num) {
+    if (confirm("Are you sure to delete this list?")) {
+      this.list.splice(num, 1);
     }
   }
-  signout(){
+  signout() {
     this.deconnexion.emit('false');
   }
 
   ngOnInit() {
 
-    this.listservice.getList().subscribe(req=> {this.data=req; this.list= req.todoListes}, error => console.log(error),() => console.log('Fini !'));
+    this.listservice.getList().subscribe(req => { this.data = req; this.list = req.todoListes }, error => console.log(error), () => console.log('Fini !'));
   }
 
-  save(){
-    this.data.todoListes=this.list;
-    this.listservice.sendList(this.data).subscribe( res=> console.log("saved object "),error=>console.log(" error in post"));
+  save() {
+    this.data.todoListes = this.list;
+    this.listservice.sendList(this.data).subscribe(res => console.log("saved object "), error => console.log(" error in post"));
   }
 
-    
+
 
 }
