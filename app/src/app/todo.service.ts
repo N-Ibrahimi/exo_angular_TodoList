@@ -42,6 +42,12 @@ export class TodoService {
     const hearders = new HttpHeaders().set('login', u).set('password', p).set('Content-Type', 'application/json');
     return this.http.get<string>(this.Url, { headers: hearders });
   }
+
+  inscription(u,p){
+    this.username=u;
+    this.Password=p;
+    return this.http.get(`http://92.222.69.104/todo/create/${this.username}/${this.Password}`);
+  }
 }
 export class Data {
   utilisateur: string;

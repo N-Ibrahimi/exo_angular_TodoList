@@ -3,6 +3,28 @@
         <div class="d-flex flex-column col-12 py-2 ">
             <mat-form-field appearance="outline">
                 <mat-label>Enter Your Name</mat-label>
+                <input matInput placeholder="Your name" required [(ngModel)]="Susername" name="Susername">
+                <mat-hint *ngIf="username==null" class="text-danger mt-0 mb-2"> Username Required !</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Your Password</mat-label>
+                <input matInput placeholder="Your Password" required [(ngModel)]="Spassword" name="Spassword">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Your Password</mat-label>
+                <input matInput placeholder="Renter Password" required [(ngModel)]="confpassword" name="Sconfirm"
+                    (keyup)="check(Susername,Spassword,confpassword)">
+                <mat-hint *ngIf="disabled" class="text-danger mt-0 mb-2"> Don't match !</mat-hint>
+            </mat-form-field>
+            <button mat-stroked-button color="primary" (click)="signup(Susername, Spassword)"
+                class="py-1 mt-3">Signup</button>
+
+        </div>
+    </div>
+    <div class="col-md-4  border border-success col-sm-10 p-5 m-5 bg-light rounded">
+        <div class="d-flex flex-column col-12 py-2 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Your Name</mat-label>
                 <input matInput placeholder="Your name" required [(ngModel)]="username" name="username">
                 <mat-hint *ngIf="username==null" class="text-danger mt-0 mb-2"> Username Required !</mat-hint>
             </mat-form-field>
@@ -12,20 +34,7 @@
             </mat-form-field>
 
             <button mat-stroked-button color="primary" (click)="singin(username, password)"
-                class="py-1 mt-3">signup</button>
+                class="py-1 mt-3">Login</button>
 
         </div>
-    </div>
-    <div class="col-md-4  border border-success col-sm-10 p-4 m-5">
-
-    </div>
 </div>
-
-<!--
-            <mat-form-field appearance="outline">
-                <mat-label>Confirm Your Password</mat-label>
-                <input matInput placeholder="Renter Password" required [(ngModel)]="confpassword" name="name"
-                    (keyup)="check(username,password,confpassword)">
-                <mat-hint *ngIf="disabled" class="text-danger mt-0 mb-2"> Don't match !</mat-hint>
-            </mat-form-field>
-            -->

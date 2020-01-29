@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../todo.service';
+
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -9,6 +10,8 @@ export class ConnexionComponent implements OnInit {
   disabled: boolean = true;
   username;
   password;
+  Spassword;
+  Susername;
   confpassword;
   public logedin: boolean = false;
 
@@ -28,11 +31,13 @@ export class ConnexionComponent implements OnInit {
     };
   }
 
-  public signup() {
-    console.log(this.username + " **" + this.password);
+  signup(us,ps) {
+    this.connexionservice.inscription(us,ps).subscribe(res =>console.log(" inscription reussie !"));
+    this.singin(us,ps);
   }
 
   singin(us, ps) {
     this.connexionservice.connectMe(us, ps).subscribe(() => { this.logedin = true, this.status.emit( localStorage.getItem("download"))}, error => console.log(error), () => console.log('Fini !'));
+    
   }
 }
