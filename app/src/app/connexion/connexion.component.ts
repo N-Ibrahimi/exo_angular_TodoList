@@ -3,7 +3,7 @@ import { TodoService } from '../todo.service';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.css']
+  styleUrls: []
 })
 export class ConnexionComponent implements OnInit {
   disabled: boolean = true;
@@ -33,12 +33,6 @@ export class ConnexionComponent implements OnInit {
   }
 
   singin(us, ps) {
-    console.log(us + " **" + ps);
-    this.connexionservice.connectMe(us, ps).subscribe(() => { this.logedin = true }, error => console.log(error), () => console.log('Fini !'));
-    this.status.emit(true);
+    this.connexionservice.connectMe(us, ps).subscribe(() => { this.logedin = true, this.status.emit( localStorage.getItem("download"))}, error => console.log(error), () => console.log('Fini !'));
   }
-  onSubmit() {
-
-  }
-
 }

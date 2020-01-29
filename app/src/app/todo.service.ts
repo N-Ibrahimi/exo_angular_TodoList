@@ -28,8 +28,17 @@ export class TodoService {
   }
 
   connectMe(u, p): Observable<String> {
-    this.username = u;
-    this.Password = p;
+    //if(localStorage.getItem("download")!=="No"){
+    this.username = u ;
+    this.Password = p ;
+    /*
+    localStorage.setItem('charged', u);
+    localStorage.setItem('notallow', p);
+    }else{
+    this.username =  localStorage.getItem("charged");
+    this.Password = localStorage.getItem("notallow");
+    }
+    */
     const hearders = new HttpHeaders().set('login', u).set('password', p).set('Content-Type', 'application/json');
     return this.http.get<string>(this.Url, { headers: hearders });
   }

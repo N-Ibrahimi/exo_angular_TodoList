@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TodoService } from './todo.service'
 import { getMatInputUnsupportedTypeError } from '@angular/material';
+import {TodoComponent} from './todo/todo.component';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,17 @@ import { getMatInputUnsupportedTypeError } from '@angular/material';
 })
 export class AppComponent {
   public search;
+  public todo:TodoComponent;
   public auth: boolean = false;
   constructor(private listservice: TodoService) { }
 
   ngOnInit() {
-
+    /*
+    if(localStorage.getItem("download")==="No"){
+    this.auth=true;
+    this.todo.do();
+    }
+  */
   }
 
   show() {
@@ -22,5 +29,8 @@ export class AppComponent {
 
   deconnecte() {
     this.auth = false;
+    localStorage.removeItem("charged");
+    localStorage.removeItem("notallow");
+    localStorage.removeItem("download");
   }
 }
